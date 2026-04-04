@@ -31,7 +31,6 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -42,13 +41,17 @@
     overflow-x: hidden;
   }
 
+  /* ── DİL SİSTEMİ ── */
+  .tr, .en { display: none; }
+  body.lang-tr .tr { display: inline; }
+  body.lang-en .en { display: inline; }
+
   /* ── LANGUAGE SWITCHER ── */
   .lang-bar {
     position: fixed;
     top: 0; right: 0;
     z-index: 100;
     display: flex;
-    gap: 0;
     padding: 12px 20px;
   }
   .lang-btn {
@@ -135,11 +138,7 @@
     text-transform: uppercase;
   }
 
-  .logo-placeholder svg {
-    width: 40px;
-    height: 40px;
-    opacity: 0.6;
-  }
+  .logo-placeholder svg { width: 40px; height: 40px; opacity: 0.6; }
 
   .logo-wrap img {
     width: 100%;
@@ -157,10 +156,7 @@
     color: var(--cream);
   }
 
-  .hero-title em {
-    font-style: italic;
-    color: var(--wood-light);
-  }
+  .hero-title em { font-style: italic; color: var(--wood-light); }
 
   .hero-tagline {
     font-size: 13px;
@@ -169,9 +165,6 @@
     color: var(--text-muted);
     max-width: 400px;
   }
-
-  .hero-tagline span[data-lang] { display: none; }
-  .hero-tagline span[data-lang].active { display: inline; }
 
   .hero-divider {
     width: 1px;
@@ -286,9 +279,7 @@
     letter-spacing: 0.15em;
   }
 
-  .about-image-placeholder svg {
-    width: 48px; height: 48px; opacity: 0.4;
-  }
+  .about-image-placeholder svg { width: 48px; height: 48px; opacity: 0.4; }
 
   .stats-row {
     display: flex;
@@ -354,17 +345,6 @@
 
   .product-card:hover::before { opacity: 1; }
 
-  .product-icon {
-    width: 56px; height: 56px;
-    background: var(--green-900);
-    border-radius: 2px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 24px;
-    color: var(--wood);
-  }
-
-  .product-icon svg { width: 28px; height: 28px; }
-
   .product-name {
     font-family: 'Cormorant Garamond', serif;
     font-size: 22px;
@@ -423,13 +403,12 @@
     border-radius: 12px;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
-    font-size: 22px;
   }
 
-  .platform-icon.yt { background: rgba(255,0,0,0.12); }
-  .platform-icon.ig { background: rgba(225,48,108,0.12); }
+  .platform-icon.yt   { background: rgba(255,0,0,0.12); }
+  .platform-icon.ig   { background: rgba(225,48,108,0.12); }
   .platform-icon.etsy { background: rgba(240,104,40,0.12); }
-  .platform-icon.sh { background: rgba(196,149,106,0.15); }
+  .platform-icon.sh   { background: rgba(196,149,106,0.15); }
 
   .platform-info { flex: 1; }
 
@@ -447,7 +426,7 @@
     letter-spacing: 0.05em;
   }
 
-  /* ── YOUTUBE FEATURE ── */
+  /* ── YOUTUBE SECTION ── */
   .yt-section {
     background: var(--green-900);
     max-width: 100%;
@@ -460,22 +439,17 @@
   .yt-embed {
     margin-top: 48px;
     aspect-ratio: 16/9;
-    background: var(--green-950);
-    border: 1px solid rgba(58,125,64,0.2);
     border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    color: var(--green-600);
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    position: relative;
     overflow: hidden;
+    border: 1px solid rgba(58,125,64,0.2);
   }
 
-  .yt-embed svg { width: 48px; height: 48px; opacity: 0.5; }
+  .yt-embed iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: none;
+  }
 
   .yt-cta {
     display: inline-flex;
@@ -543,39 +517,34 @@
     letter-spacing: 0.05em;
   }
 
-  /* ── LANGUAGE TOGGLE ── */
-  [data-tr], [data-en] { display: none; }
-
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
-  .hero-content > * {
-    animation: fadeUp 0.8s ease both;
-  }
-  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-content > * { animation: fadeUp 0.8s ease both; }
+  .hero-content > *:nth-child(1) { animation-delay: 0.10s; }
   .hero-content > *:nth-child(2) { animation-delay: 0.25s; }
-  .hero-content > *:nth-child(3) { animation-delay: 0.4s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.40s; }
   .hero-content > *:nth-child(4) { animation-delay: 0.55s; }
   .hero-content > *:nth-child(5) { animation-delay: 0.65s; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    .hero { padding: 0 20px; }
-    section { padding: 70px 20px; }
-    .about-grid { grid-template-columns: 1fr; gap: 40px; }
-    .products-grid { grid-template-columns: 1fr; }
+    .hero           { padding: 0 20px; }
+    section         { padding: 70px 20px; }
+    .about-grid     { grid-template-columns: 1fr; gap: 40px; }
+    .products-grid  { grid-template-columns: 1fr; }
     .platforms-grid { grid-template-columns: 1fr; }
-    .gallery-strip { grid-template-columns: repeat(2, 1fr); }
-    footer { flex-direction: column; text-align: center; }
-    .stats-row { flex-wrap: wrap; gap: 24px; }
+    .gallery-strip  { grid-template-columns: repeat(2, 1fr); }
+    footer          { flex-direction: column; text-align: center; }
+    .stats-row      { flex-wrap: wrap; gap: 24px; }
     .products-section, .yt-section { padding: 70px 20px; }
   }
 </style>
 </head>
-<body>
+<body class="lang-tr">
 
 <!-- LANGUAGE BAR -->
 <div class="lang-bar">
@@ -603,15 +572,15 @@
     <h1 class="hero-title">Yaffle<br><em>Woods</em></h1>
 
     <p class="hero-tagline">
-      <span data-tr class="active">El işçiliğiyle şekillenen doğal ahşap ürünler</span>
-      <span data-en>Natural wood products shaped by craftsmanship</span>
+      <span class="tr">El işçiliğiyle şekillenen doğal ahşap ürünler</span>
+      <span class="en">Natural wood products shaped by craftsmanship</span>
     </p>
 
     <div class="hero-divider"></div>
 
     <a href="#platforms" class="yt-cta" style="margin-top: 0;">
-      <span data-tr class="active">Mağazaları Keşfet</span>
-      <span data-en>Explore Stores</span>
+      <span class="tr">Mağazaları Keşfet</span>
+      <span class="en">Explore Stores</span>
       ↓
     </a>
   </div>
@@ -619,35 +588,24 @@
   <div class="gallery-strip">
     <div class="gallery-item">
       <img src="p1.jpg" alt="">
-      <div class="gallery-placeholder">
-        <span data-tr class="active">Fotoğraf 1</span>
-        <span data-en>Photo 1</span>
-      </div>
+      <div class="gallery-placeholder"><span class="tr">Fotoğraf 1</span><span class="en">Photo 1</span></div>
     </div>
     <div class="gallery-item">
       <img src="p2.jpg" alt="">
-      <div class="gallery-placeholder">
-        <span data-tr class="active">Fotoğraf 2</span>
-        <span data-en>Photo 2</span>
-      </div>
+      <div class="gallery-placeholder"><span class="tr">Fotoğraf 2</span><span class="en">Photo 2</span></div>
     </div>
     <div class="gallery-item">
       <img src="p3.jpg" alt="">
-      <div class="gallery-placeholder">
-        <span data-tr class="active">Fotoğraf 3</span>
-        <span data-en>Photo 3</span>
-      </div>
+      <div class="gallery-placeholder"><span class="tr">Fotoğraf 3</span><span class="en">Photo 3</span></div>
     </div>
     <div class="gallery-item">
       <img src="p4.JPG" alt="">
-      <div class="gallery-placeholder">
-        <span data-tr class="active">Fotoğraf 4</span>
-        <span data-en>Photo 4</span>
-      </div>
+      <div class="gallery-placeholder"><span class="tr">Fotoğraf 4</span><span class="en">Photo 4</span></div>
     </div>
   </div>
 </div>
 
+<!-- ABOUT -->
 <section>
   <div class="about-grid">
     <div class="about-image">
@@ -658,48 +616,47 @@
           <path d="M4 18 L44 18 M16 8 L16 40"/>
           <circle cx="10" cy="13" r="2" fill="currentColor"/>
         </svg>
-        <span data-tr class="active">Atölye Fotoğrafı</span>
-        <span data-en>Workshop Photo</span>
+        <span class="tr">Atölye Fotoğrafı</span>
+        <span class="en">Workshop Photo</span>
       </div>
     </div>
 
     <div>
       <p class="section-label">
-        <span data-tr class="active">Hakkımızda</span>
-        <span data-en>About Us</span>
+        <span class="tr">Hakkımızda</span>
+        <span class="en">About Us</span>
       </p>
       <h2 class="section-title">
-        <span data-tr class="active">Her parça, <em>doğanın</em> izini taşır</span>
-        <span data-en>Every piece carries <em>nature's</em> mark</span>
+        <span class="tr">Her parça, <em>doğanın</em> izini taşır</span>
+        <span class="en">Every piece carries <em>nature's</em> mark</span>
       </h2>
       <p class="section-body">
-        <span data-tr class="active">Yaffle Woods olarak saç çubukları, servis tabaklarından kişisel aksesuvarlara kadar her ürünü özenle seçilmiş doğal ahşaplardan, el yordamıyla şekillendiriyoruz. Kütlesel üretimde kaybolmayan detay, emek ve özgünlük bizim farkımız.</span>
-        <span data-en>At Yaffle Woods, we handcraft every piece — from hair sticks and serving boards to personal accessories — using carefully selected natural woods. The detail, labour, and authenticity lost in mass production is our defining difference.</span>
+        <span class="tr">Yaffle Woods olarak saç çubukları, servis tabaklarından kişisel aksesuvarlara kadar her ürünü özenle seçilmiş doğal ahşaplardan, el yordamıyla şekillendiriyoruz. Kütlesel üretimde kaybolmayan detay, emek ve özgünlük bizim farkımız.</span>
+        <span class="en">At Yaffle Woods, we handcraft every piece — from hair sticks and serving boards to personal accessories — using carefully selected natural woods. The detail, labour, and authenticity lost in mass production is our defining difference.</span>
       </p>
 
       <div class="stats-row">
         <div class="stat">
           <span class="stat-num">100%</span>
           <span class="stat-label">
-            <span data-tr class="active">Doğal Ahşap</span>
-            <span data-en>Natural Wood</span>
-          </span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">El</span>
-          <span class="stat-label">
-            <span data-tr class="active">İşçiliği</span>
-            <span data-en>Crafted</span>
+            <span class="tr">Doğal Ahşap</span>
+            <span class="en">Natural Wood</span>
           </span>
         </div>
         <div class="stat">
           <span class="stat-num">
-            <span data-tr class="active">Özel</span>
-            <span data-en>Bespoke</span>
+            <span class="tr">El</span><span class="en">Hand</span>
           </span>
           <span class="stat-label">
-            <span data-tr class="active">Tasarım</span>
-            <span data-en>Design</span>
+            <span class="tr">İşçiliği</span><span class="en">Crafted</span>
+          </span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">
+            <span class="tr">Özel</span><span class="en">Bespoke</span>
+          </span>
+          <span class="stat-label">
+            <span class="tr">Tasarım</span><span class="en">Design</span>
           </span>
         </div>
       </div>
@@ -711,67 +668,45 @@
 <div class="products-section">
   <div class="products-inner">
     <p class="section-label">
-      <span data-tr class="active">Koleksiyon</span>
-      <span data-en>Collection</span>
+      <span class="tr">Koleksiyon</span>
+      <span class="en">Collection</span>
     </p>
     <h2 class="section-title">
-      <span data-tr class="active">Ahşabın <em>sanatı</em></span>
-      <span data-en>The <em>art</em> of wood</span>
+      <span class="tr">Ahşabın <em>sanatı</em></span>
+      <span class="en">The <em>art</em> of wood</span>
     </h2>
 
     <div class="products-grid">
-      <!-- Kart 1 -->
       <div class="product-card">
-        <div class="product-icon">
-          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4">
-            <line x1="4" y1="24" x2="20" y2="8"/>
-            <circle cx="22" cy="6" r="3"/>
-            <line x1="10" y1="24" x2="22" y2="12"/>
-          </svg>
-        </div>
         <p class="product-name">
-          <span data-tr class="active">Saç Çubukları</span>
-          <span data-en>Hair Sticks</span>
+          <span class="tr">Saç Çubukları</span>
+          <span class="en">Hair Sticks</span>
         </p>
         <p class="product-desc">
-          <span data-tr class="active">Farklı ahşap türleri ve tasarımlarla hazırlanan, günlük kullanıma uygun el yapımı saç aksesuarları.</span>
-          <span data-en>Handmade hair accessories crafted from various wood species and designs, suitable for everyday use.</span>
+          <span class="tr">Farklı ahşap türleri ve tasarımlarla hazırlanan, günlük kullanıma uygun el yapımı saç aksesuarları.</span>
+          <span class="en">Handmade hair accessories crafted from various wood species and designs, suitable for everyday use.</span>
         </p>
       </div>
 
-      <!-- Kart 2 -->
       <div class="product-card">
-        <div class="product-icon">
-          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4">
-            <rect x="3" y="6" width="22" height="16" rx="2"/>
-            <line x1="3" y1="12" x2="25" y2="12"/>
-            <line x1="10" y1="6" x2="10" y2="22"/>
-          </svg>
-        </div>
         <p class="product-name">
-          <span data-tr class="active">Servis Tabaklarıu</span>
-          <span data-en>Serving Boards</span>
+          <span class="tr">Servis Tabakları</span>
+          <span class="en">Serving Boards</span>
         </p>
         <p class="product-desc">
-          <span data-tr class="active">Sofranıza özgün bir dokunuş katan, doğal ahşaptan oyma servis ve sunum tabaklarıu.</span>
-          <span data-en>Carved natural wood serving and presentation boards that bring a unique touch to your table.</span>
+          <span class="tr">Sofranıza özgün bir dokunuş katan, doğal ahşaptan oyma servis ve sunum tabakları.</span>
+          <span class="en">Carved natural wood serving and presentation boards that bring a unique touch to your table.</span>
         </p>
       </div>
 
-      <!-- Kart 3 -->
       <div class="product-card">
-        <div class="product-icon">
-          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4">
-            <path d="M14 4 L18 10 L24 11 L19.5 15.5 L20.5 22 L14 19 L7.5 22 L8.5 15.5 L4 11 L10 10 Z"/>
-          </svg>
-        </div>
         <p class="product-name">
-          <span data-tr class="active">Özel Tasarım</span>
-          <span data-en>Custom Design</span>
+          <span class="tr">Özel Tasarım</span>
+          <span class="en">Custom Design</span>
         </p>
         <p class="product-desc">
-          <span data-tr class="active">İsim, motif veya özel tasarım isteklerinize göre kişiselleştirilmiş ahşap ürünler.</span>
-          <span data-en>Personalised wood products crafted to your specifications — names, motifs, or unique designs.</span>
+          <span class="tr">İsim, motif veya özel tasarım isteklerinize göre kişiselleştirilmiş ahşap ürünler.</span>
+          <span class="en">Personalised wood products crafted to your specifications — names, motifs, or unique designs.</span>
         </p>
       </div>
     </div>
@@ -783,31 +718,27 @@
   <div class="yt-inner">
     <p class="section-label">YouTube</p>
     <h2 class="section-title">
-      <span data-tr class="active">Yapım sürecini <em>izleyin</em></span>
-      <span data-en>Watch the <em>making</em></span>
+      <span class="tr">Yapım sürecini <em>izleyin</em></span>
+      <span class="en">Watch the <em>making</em></span>
     </h2>
     <p class="section-body" style="margin: 0 auto;">
-      <span data-tr class="active">Ham ahşaptan son ürüne uzanan yolculuğu kanalımızdan takip edin. Her video bir el sanatının hikâyesi.</span>
-      <span data-en>Follow the journey from raw timber to finished piece on our channel. Each video tells the story of a craft.</span>
+      <span class="tr">Ham ahşaptan son ürüne uzanan yolculuğu kanalımızdan takip edin. Her video bir el sanatının hikâyesi.</span>
+      <span class="en">Follow the journey from raw timber to finished piece on our channel. Each video tells the story of a craft.</span>
     </p>
 
     <div class="yt-embed">
-      <!-- YouTube embed için: src kısmındaki VIDEO_ID'yi kanalınızın son videosunun ID'siyle değiştirin -->
-      <!-- <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen style="position:absolute;inset:0;border-radius:4px;"></iframe> -->
-      <svg viewBox="0 0 48 48" fill="currentColor">
-        <path d="M43.2 33.9c-.4 1.8-2 3-3.8 3.2C35.2 37.6 29.7 38 24 38c-5.7 0-11.2-.4-15.4-.9-1.8-.2-3.4-1.4-3.8-3.2-.6-2.6-.8-5.5-.8-8.9s.2-6.3.8-8.9c.4-1.8 2-3 3.8-3.2C12.8 12.4 18.3 12 24 12c5.7 0 11.2.4 15.4.9 1.8.2 3.4 1.4 3.8 3.2.6 2.6.8 5.5.8 8.9s-.2 6.3-.8 8.9zM20 29l12.7-5-12.7-5v10z"/>
-      </svg>
-      <span style="font-size:12px; letter-spacing:0.1em;">
-        <span data-tr class="active">YouTube embed buraya eklenecek</span>
-        <span data-en>YouTube embed goes here</span>
-      </span>
+      <!-- VIDEO_ID kısmını kendi video ID'nizle değiştirin -->
+      <!-- Shorts için: https://www.youtube.com/embed/VIDEO_ID -->
+      <!-- Normal video için aynı format geçerlidir -->
+      <iframe src="https://www.youtube.com/embed/oSUy88p5czM?si=D_uujrLY8BYc1SYp" allowfullscreen></iframe>
     </div>
 
-    <!-- YT URL'nizi buraya ekleyin -->
     <a href="https://youtube.com/@YaffleWoods" target="_blank" class="yt-cta">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 3H4.4C3.1 3 2 4.1 2 5.4v13.2C2 19.9 3.1 21 4.4 21h15.2c1.3 0 2.4-1.1 2.4-2.4V5.4C22 4.1 20.9 3 19.6 3zm-3.3 9.7l-6.7 3.5c-.4.2-.9-.1-.9-.6V8.4c0-.5.5-.8.9-.6l6.7 3.7c.4.2.4.8 0 1z"/></svg>
-      <span data-tr class="active">Kanala Git</span>
-      <span data-en>Visit Channel</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19.6 3H4.4C3.1 3 2 4.1 2 5.4v13.2C2 19.9 3.1 21 4.4 21h15.2c1.3 0 2.4-1.1 2.4-2.4V5.4C22 4.1 20.9 3 19.6 3zm-3.3 9.7l-6.7 3.5c-.4.2-.9-.1-.9-.6V8.4c0-.5.5-.8.9-.6l6.7 3.7c.4.2.4.8 0 1z"/>
+      </svg>
+      <span class="tr">Kanala Git</span>
+      <span class="en">Visit Channel</span>
     </a>
   </div>
 </div>
@@ -815,17 +746,16 @@
 <!-- PLATFORMS -->
 <section id="platforms">
   <p class="section-label">
-    <span data-tr class="active">Platformlar</span>
-    <span data-en>Platforms</span>
+    <span class="tr">Platformlar</span>
+    <span class="en">Platforms</span>
   </p>
   <h2 class="section-title">
-    <span data-tr class="active">Bizi <em>takip edin</em>, ürünlerimize ulaşın</span>
-    <span data-en><em>Follow us</em> and find our products</span>
+    <span class="tr">Bizi <em>takip edin</em>, ürünlerimize ulaşın</span>
+    <span class="en"><em>Follow us</em> and find our products</span>
   </h2>
 
   <div class="platforms-grid">
 
-    <!-- Instagram -->
     <a class="platform-card" href="https://instagram.com/yaffle.woods/" target="_blank">
       <div class="platform-icon ig">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E1306C" stroke-width="1.8">
@@ -836,14 +766,10 @@
       </div>
       <div class="platform-info">
         <p class="platform-name">Instagram</p>
-        <p class="platform-sub">
-          <span data-tr class="active">@yaffle.woods · Fotoğraflar & Reels</span>
-          <span data-en>@yaffle.woods · Photos & Reels</span>
-        </p>
+        <p class="platform-sub">@yaffle.woods · <span class="tr">Fotoğraflar & Reels</span><span class="en">Photos & Reels</span></p>
       </div>
     </a>
 
-    <!-- YouTube -->
     <a class="platform-card" href="https://youtube.com/@YaffleWoods" target="_blank">
       <div class="platform-icon yt">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="#FF0000">
@@ -852,14 +778,10 @@
       </div>
       <div class="platform-info">
         <p class="platform-name">YouTube</p>
-        <p class="platform-sub">
-          <span data-tr class="active">Yapım süreçleri & Videolar</span>
-          <span data-en>Making processes & Videos</span>
-        </p>
+        <p class="platform-sub"><span class="tr">Yapım süreçleri & Videolar</span><span class="en">Making processes & Videos</span></p>
       </div>
     </a>
 
-    <!-- Etsy -->
     <a class="platform-card" href="https://etsy.com/shop/YaffleWoodworkingArt" target="_blank">
       <div class="platform-icon etsy">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="#F06828">
@@ -868,14 +790,10 @@
       </div>
       <div class="platform-info">
         <p class="platform-name">Etsy</p>
-        <p class="platform-sub">
-          <span data-tr class="active">Uluslararası el yapımı mağazası</span>
-          <span data-en>International handmade marketplace</span>
-        </p>
+        <p class="platform-sub"><span class="tr">Uluslararası el yapımı mağazası</span><span class="en">International handmade marketplace</span></p>
       </div>
     </a>
 
-    <!-- Shopier -->
     <a class="platform-card" href="https://shopier.com/yafflewoods" target="_blank">
       <div class="platform-icon sh">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--wood)" stroke-width="1.8">
@@ -886,10 +804,7 @@
       </div>
       <div class="platform-info">
         <p class="platform-name">Shopier</p>
-        <p class="platform-sub">
-          <span data-tr class="active">Türkiye'de güvenli alışveriş</span>
-          <span data-en>Secure shopping in Turkey</span>
-        </p>
+        <p class="platform-sub"><span class="tr">Türkiye'de güvenli alışveriş</span><span class="en">Secure shopping in Turkey</span></p>
       </div>
     </a>
 
@@ -900,37 +815,33 @@
 <footer>
   <div class="footer-brand">Yaffle <span>Woods</span></div>
   <ul class="footer-links">
-    <li><a href="#" data-tr class="active">Hakkımızda</a><a href="#" data-en>About</a></li>
-    <li><a href="#platforms" data-tr class="active">Mağazalar</a><a href="#platforms" data-en>Shops</a></li>
+    <li><a href="#"><span class="tr">Hakkımızda</span><span class="en">About</span></a></li>
+    <li><a href="#platforms"><span class="tr">Mağazalar</span><span class="en">Shops</span></a></li>
     <li><a href="https://instagram.com/yaffle.woods/" target="_blank">Instagram</a></li>
   </ul>
   <p class="footer-copy">© 2025 Yaffle Woods</p>
 </footer>
 
 <script>
-  let currentLang = 'tr';
-
   function setLang(lang) {
-    currentLang = lang;
-    document.querySelectorAll('[data-tr]').forEach(el => {
-      el.classList.toggle('active', lang === 'tr');
-    });
-    document.querySelectorAll('[data-en]').forEach(el => {
-      el.classList.toggle('active', lang === 'en');
-    });
+    document.body.className = 'lang-' + lang;
+    document.documentElement.lang = lang;
     document.querySelectorAll('.lang-btn').forEach((btn, i) => {
       btn.classList.toggle('active', (i === 0 && lang === 'tr') || (i === 1 && lang === 'en'));
     });
-    document.documentElement.lang = lang;
   }
 
-  // Görsel yoksa placeholder göster, varsa img göster
+  // Görsel varsa göster, yoksa placeholder kalsın
   document.querySelectorAll('.gallery-item img, .about-image img, .logo-wrap img').forEach(img => {
-    img.onload = function() {
-      this.style.display = 'block';
-      const placeholder = this.parentElement.querySelector('[class$="-placeholder"], .logo-placeholder');
-      if (placeholder) placeholder.style.display = 'none';
+    const show = () => {
+      if (img.naturalWidth > 0) {
+        img.style.display = 'block';
+        const ph = img.parentElement.querySelector('.gallery-placeholder, .about-image-placeholder, .logo-placeholder');
+        if (ph) ph.style.display = 'none';
+      }
     };
+    img.addEventListener('load', show);
+    if (img.complete) show();
   });
 
   // Scroll reveal
