@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yaffle Woods — El Yapımı Ahşap Ürünleri</title>
+<meta name="description" content="Yaffle Woods | Handcrafted wooden products — hair sticks, serving boards and more.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --green-950: #0d1f0e;
+    --green-900: #132815;
+    --green-800: #1c3d1f;
+    --green-700: #255228;
+    --green-600: #2e6732;
+    --green-500: #3a7d40;
+    --green-400: #5a9e61;
+    --green-300: #85be8b;
+    --green-200: #b5d9ba;
+    --green-100: #dff0e1;
+    --cream: #f5ede0;
+    --cream-dark: #e8d9c4;
+    --wood: #c4956a;
+    --wood-light: #d4aa84;
+    --text-light: #f0ece4;
+    --text-muted: #a8b8aa;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--green-950);
+    color: var(--text-light);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── LANGUAGE SWITCHER ── */
+  .lang-bar {
+    position: fixed;
+    top: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    gap: 0;
+    padding: 12px 20px;
+  }
+  .lang-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--text-muted);
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .lang-btn:first-child { border-radius: 4px 0 0 4px; }
+  .lang-btn:last-child { border-radius: 0 4px 4px 0; border-left: none; }
+  .lang-btn.active {
+    background: var(--green-600);
+    border-color: var(--green-600);
+    color: var(--text-light);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    position: relative;
+    overflow: hidden;
+    padding: 0 40px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(46,103,50,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(196,149,106,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-texture {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 120px 0 60px;
+    gap: 32px;
+  }
+
+  .logo-wrap {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(196,149,106,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--green-900);
+    position: relative;
+  }
+
+  .logo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: var(--wood);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .logo-placeholder svg {
+    width: 40px;
+    height: 40px;
+    opacity: 0.6;
+  }
+
+  .logo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 10vw, 96px);
+    font-weight: 500;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--wood-light);
+  }
+
+  .hero-tagline {
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    max-width: 400px;
+  }
+
+  .hero-tagline span[data-lang] { display: none; }
+  .hero-tagline span[data-lang].active { display: inline; }
+
+  .hero-divider {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--green-600), transparent);
+    margin: 8px auto;
+  }
+
+  /* ── GALLERY STRIP ── */
+  .gallery-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    position: relative;
+    z-index: 1;
+    margin: 0 -40px;
+  }
+
+  .gallery-item {
+    aspect-ratio: 4/3;
+    background: var(--green-900);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    filter: saturate(0.85);
+    transition: transform 0.6s ease;
+  }
+
+  .gallery-item:hover img { transform: scale(1.04); }
+
+  .gallery-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--green-900);
+    color: var(--green-700);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    border: 1px dashed rgba(58,125,64,0.2);
+  }
+
+  /* ── SECTION SHARED ── */
+  section {
+    padding: 100px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--wood);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 500;
+    color: var(--cream);
+    line-height: 1.1;
+    margin-bottom: 32px;
+  }
+
+  .section-title em { font-style: italic; color: var(--green-300); }
+
+  .section-body {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-muted);
+    max-width: 560px;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-image {
+    aspect-ratio: 3/4;
+    background: var(--green-900);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(58,125,64,0.2);
+  }
+
+  .about-image img { width: 100%; height: 100%; object-fit: cover; display: none; }
+
+  .about-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--green-600);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+  }
+
+  .about-image-placeholder svg {
+    width: 48px; height: 48px; opacity: 0.4;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 40px;
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .stat { display: flex; flex-direction: column; gap: 6px; }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--wood-light);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ── PRODUCTS ── */
+  .products-section {
+    background: var(--green-900);
+    max-width: 100%;
+    padding: 100px 40px;
+  }
+
+  .products-inner { max-width: 1100px; margin: 0 auto; }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  .product-card {
+    background: var(--green-950);
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(58,125,64,0.12);
+    transition: border-color 0.3s;
+  }
+
+  .product-card:hover { border-color: rgba(90,158,97,0.3); }
+
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--green-600), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .product-card:hover::before { opacity: 1; }
+
+  .product-icon {
+    width: 56px; height: 56px;
+    background: var(--green-900);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 24px;
+    color: var(--wood);
+  }
+
+  .product-icon svg { width: 28px; height: 28px; }
+
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+
+  .product-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  /* ── PLATFORMS ── */
+  .platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 60px;
+  }
+
+  .platform-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 28px 32px;
+    border: 1px solid rgba(58,125,64,0.2);
+    border-radius: 2px;
+    text-decoration: none;
+    background: var(--green-900);
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .platform-card::after {
+    content: '→';
+    position: absolute;
+    right: 28px;
+    color: var(--green-500);
+    font-size: 18px;
+    transition: transform 0.25s;
+  }
+
+  .platform-card:hover {
+    border-color: rgba(90,158,97,0.5);
+    background: var(--green-800);
+    transform: translateX(4px);
+  }
+
+  .platform-card:hover::after { transform: translateX(6px); }
+
+  .platform-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 22px;
+  }
+
+  .platform-icon.yt { background: rgba(255,0,0,0.12); }
+  .platform-icon.ig { background: rgba(225,48,108,0.12); }
+  .platform-icon.etsy { background: rgba(240,104,40,0.12); }
+  .platform-icon.sh { background: rgba(196,149,106,0.15); }
+
+  .platform-info { flex: 1; }
+
+  .platform-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+
+  .platform-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── YOUTUBE FEATURE ── */
+  .yt-section {
+    background: var(--green-900);
+    max-width: 100%;
+    padding: 100px 40px;
+    text-align: center;
+  }
+
+  .yt-inner { max-width: 800px; margin: 0 auto; }
+
+  .yt-embed {
+    margin-top: 48px;
+    aspect-ratio: 16/9;
+    background: var(--green-950);
+    border: 1px solid rgba(58,125,64,0.2);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--green-600);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .yt-embed svg { width: 48px; height: 48px; opacity: 0.5; }
+
+  .yt-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 32px;
+    padding: 14px 32px;
+    border: 1.5px solid var(--green-600);
+    color: var(--green-300);
+    text-decoration: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all 0.25s;
+  }
+
+  .yt-cta:hover {
+    background: var(--green-600);
+    color: var(--cream);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 60px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--cream);
+  }
+
+  .footer-brand span { color: var(--wood); }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--green-300); }
+
+  .footer-copy {
+    font-size: 11px;
+    color: var(--green-700);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── LANGUAGE TOGGLE ── */
+  [data-tr], [data-en] { display: none; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content > * {
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.4s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.55s; }
+  .hero-content > *:nth-child(5) { animation-delay: 0.65s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero { padding: 0 20px; }
+    section { padding: 70px 20px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .products-grid { grid-template-columns: 1fr; }
+    .platforms-grid { grid-template-columns: 1fr; }
+    .gallery-strip { grid-template-columns: repeat(2, 1fr); }
+    footer { flex-direction: column; text-align: center; }
+    .stats-row { flex-wrap: wrap; gap: 24px; }
+    .products-section, .yt-section { padding: 70px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LANGUAGE BAR -->
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('tr')">TR</button>
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-texture"></div>
+
+  <div class="hero-content">
+    <div class="logo-wrap">
+      <img src="logo.png" alt="Yaffle Woods Logo">
+      <div class="logo-placeholder">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M24 4 C14 4 8 12 8 20 C8 30 16 36 24 44 C32 36 40 30 40 20 C40 12 34 4 24 4Z"/>
+          <path d="M24 14 L24 30 M18 20 L30 20" stroke-linecap="round"/>
+        </svg>
+        <span>LOGO</span>
+      </div>
+    </div>
+
+    <h1 class="hero-title">Yaffle<br><em>Woods</em></h1>
+
+    <p class="hero-tagline">
+      <span data-tr class="active">El işçiliğiyle şekillenen doğal ahşap ürünler</span>
+      <span data-en>Natural wood products shaped by craftsmanship</span>
+    </p>
+
+    <div class="hero-divider"></div>
+
+    <a href="#platforms" class="yt-cta" style="margin-top: 0;">
+      <span data-tr class="active">Mağazaları Keşfet</span>
+      <span data-en>Explore Stores</span>
+      ↓
+    </a>
+  </div>
+
+  <div class="gallery-strip">
+    <div class="gallery-item">
+      <img src="products/p1.jpg" alt="">
+      <div class="gallery-placeholder">
+        <span data-tr class="active">Fotoğraf 1</span>
+        <span data-en>Photo 1</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="products/p2.jpg" alt="">
+      <div class="gallery-placeholder">
+        <span data-tr class="active">Fotoğraf 2</span>
+        <span data-en>Photo 2</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="products/p3.jpg" alt="">
+      <div class="gallery-placeholder">
+        <span data-tr class="active">Fotoğraf 3</span>
+        <span data-en>Photo 3</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="products/p4.jpg" alt="">
+      <div class="gallery-placeholder">
+        <span data-tr class="active">Fotoğraf 4</span>
+        <span data-en>Photo 4</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="about-grid">
+    <div class="about-image">
+      <img src="about.jpg" alt="Atölye">
+      <div class="about-image-placeholder">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
+          <rect x="4" y="8" width="40" height="32" rx="2"/>
+          <path d="M4 18 L44 18 M16 8 L16 40"/>
+          <circle cx="10" cy="13" r="2" fill="currentColor"/>
+        </svg>
+        <span data-tr class="active">Atölye Fotoğrafı</span>
+        <span data-en>Workshop Photo</span>
+      </div>
+    </div>
+
+    <div>
+      <p class="section-label">
+        <span data-tr class="active">Hakkımızda</span>
+        <span data-en>About Us</span>
+      </p>
+      <h2 class="section-title">
+        <span data-tr class="active">Her parça, <em>doğanın</em> izini taşır</span>
+        <span data-en>Every piece carries <em>nature's</em> mark</span>
+      </h2>
+      <p class="section-body">
+        <span data-tr class="active">Yaffle Woods olarak saç çubukları, servis tabaklarından kişisel aksesuvarlara kadar her ürünü özenle seçilmiş doğal ahşaplardan, el yordamıyla şekillendiriyoruz. Kütlesel üretimde kaybolmayan detay, emek ve özgünlük bizim farkımız.</span>
+        <span data-en>At Yaffle Woods, we handcraft every piece — from hair sticks and serving boards to personal accessories — using carefully selected natural woods. The detail, labour, and authenticity lost in mass production is our defining difference.</span>
+      </p>
+
+      <div class="stats-row">
+        <div class="stat">
+          <span class="stat-num">100%</span>
+          <span class="stat-label">
+            <span data-tr class="active">Doğal Ahşap</span>
+            <span data-en>Natural Wood</span>
+          </span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">El</span>
+          <span class="stat-label">
+            <span data-tr class="active">İşçiliği</span>
+            <span data-en>Crafted</span>
+          </span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">
+            <span data-tr class="active">Özel</span>
+            <span data-en>Bespoke</span>
+          </span>
+          <span class="stat-label">
+            <span data-tr class="active">Tasarım</span>
+            <span data-en>Design</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<div class="products-section">
+  <div class="products-inner">
+    <p class="section-label">
+      <span data-tr class="active">Koleksiyon</span>
+      <span data-en>Collection</span>
+    </p>
+    <h2 class="section-title">
+      <span data-tr class="active">Ahşabın <em>sanatı</em></span>
+      <span data-en>The <em>art</em> of wood</span>
+    </h2>
+
+    <div class="products-grid">
+      <!-- Kart 1 -->
+      <div class="product-card">
+        <div class="product-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4">
+            <line x1="4" y1="24" x2="20" y2="8"/>
+            <circle cx="22" cy="6" r="3"/>
+            <line x1="10" y1="24" x2="22" y2="12"/>
+          </svg>
+        </div>
+        <p class="product-name">
+          <span data-tr class="active">Saç Çubukları</span>
+          <span data-en>Hair Sticks</span>
+        </p>
+        <p class="product-desc">
+          <span data-tr class="active">Farklı ahşap türleri ve tasarımlarla hazırlanan, günlük kullanıma uygun el yapımı saç aksesuarları.</span>
+          <span data-en>Handmade hair accessories crafted from various wood species and designs, suitable for everyday use.</span>
+        </p>
+      </div>
+
+      <!-- Kart 2 -->
+      <div class="product-card">
+        <div class="product-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="3" y="6" width="22" height="16" rx="2"/>
+            <line x1="3" y1="12" x2="25" y2="12"/>
+            <line x1="10" y1="6" x2="10" y2="22"/>
+          </svg>
+        </div>
+        <p class="product-name">
+          <span data-tr class="active">Servis Tabaklarıu</span>
+          <span data-en>Serving Boards</span>
+        </p>
+        <p class="product-desc">
+          <span data-tr class="active">Sofranıza özgün bir dokunuş katan, doğal ahşaptan oyma servis ve sunum tabaklarıu.</span>
+          <span data-en>Carved natural wood serving and presentation boards that bring a unique touch to your table.</span>
+        </p>
+      </div>
+
+      <!-- Kart 3 -->
+      <div class="product-card">
+        <div class="product-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M14 4 L18 10 L24 11 L19.5 15.5 L20.5 22 L14 19 L7.5 22 L8.5 15.5 L4 11 L10 10 Z"/>
+          </svg>
+        </div>
+        <p class="product-name">
+          <span data-tr class="active">Özel Tasarım</span>
+          <span data-en>Custom Design</span>
+        </p>
+        <p class="product-desc">
+          <span data-tr class="active">İsim, motif veya özel tasarım isteklerinize göre kişiselleştirilmiş ahşap ürünler.</span>
+          <span data-en>Personalised wood products crafted to your specifications — names, motifs, or unique designs.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- YOUTUBE -->
+<div class="yt-section">
+  <div class="yt-inner">
+    <p class="section-label">YouTube</p>
+    <h2 class="section-title">
+      <span data-tr class="active">Yapım sürecini <em>izleyin</em></span>
+      <span data-en>Watch the <em>making</em></span>
+    </h2>
+    <p class="section-body" style="margin: 0 auto;">
+      <span data-tr class="active">Ham ahşaptan son ürüne uzanan yolculuğu kanalımızdan takip edin. Her video bir el sanatının hikâyesi.</span>
+      <span data-en>Follow the journey from raw timber to finished piece on our channel. Each video tells the story of a craft.</span>
+    </p>
+
+    <div class="yt-embed">
+      <!-- YouTube embed için: src kısmındaki VIDEO_ID'yi kanalınızın son videosunun ID'siyle değiştirin -->
+      <!-- <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen style="position:absolute;inset:0;border-radius:4px;"></iframe> -->
+      <svg viewBox="0 0 48 48" fill="currentColor">
+        <path d="M43.2 33.9c-.4 1.8-2 3-3.8 3.2C35.2 37.6 29.7 38 24 38c-5.7 0-11.2-.4-15.4-.9-1.8-.2-3.4-1.4-3.8-3.2-.6-2.6-.8-5.5-.8-8.9s.2-6.3.8-8.9c.4-1.8 2-3 3.8-3.2C12.8 12.4 18.3 12 24 12c5.7 0 11.2.4 15.4.9 1.8.2 3.4 1.4 3.8 3.2.6 2.6.8 5.5.8 8.9s-.2 6.3-.8 8.9zM20 29l12.7-5-12.7-5v10z"/>
+      </svg>
+      <span style="font-size:12px; letter-spacing:0.1em;">
+        <span data-tr class="active">YouTube embed buraya eklenecek</span>
+        <span data-en>YouTube embed goes here</span>
+      </span>
+    </div>
+
+    <!-- YT URL'nizi buraya ekleyin -->
+    <a href="https://youtube.com/@YaffleWoods" target="_blank" class="yt-cta">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 3H4.4C3.1 3 2 4.1 2 5.4v13.2C2 19.9 3.1 21 4.4 21h15.2c1.3 0 2.4-1.1 2.4-2.4V5.4C22 4.1 20.9 3 19.6 3zm-3.3 9.7l-6.7 3.5c-.4.2-.9-.1-.9-.6V8.4c0-.5.5-.8.9-.6l6.7 3.7c.4.2.4.8 0 1z"/></svg>
+      <span data-tr class="active">Kanala Git</span>
+      <span data-en>Visit Channel</span>
+    </a>
+  </div>
+</div>
+
+<!-- PLATFORMS -->
+<section id="platforms">
+  <p class="section-label">
+    <span data-tr class="active">Platformlar</span>
+    <span data-en>Platforms</span>
+  </p>
+  <h2 class="section-title">
+    <span data-tr class="active">Bizi <em>takip edin</em>, ürünlerimize ulaşın</span>
+    <span data-en><em>Follow us</em> and find our products</span>
+  </h2>
+
+  <div class="platforms-grid">
+
+    <!-- Instagram -->
+    <a class="platform-card" href="https://instagram.com/yaffle.woods/" target="_blank">
+      <div class="platform-icon ig">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E1306C" stroke-width="1.8">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="#E1306C" stroke="none"/>
+        </svg>
+      </div>
+      <div class="platform-info">
+        <p class="platform-name">Instagram</p>
+        <p class="platform-sub">
+          <span data-tr class="active">@yaffle.woods · Fotoğraflar & Reels</span>
+          <span data-en>@yaffle.woods · Photos & Reels</span>
+        </p>
+      </div>
+    </a>
+
+    <!-- YouTube -->
+    <a class="platform-card" href="https://youtube.com/@YaffleWoods" target="_blank">
+      <div class="platform-icon yt">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="#FF0000">
+          <path d="M21.6 7.2c-.2-1-.9-1.7-1.9-1.9C17.8 5 12 5 12 5s-5.8 0-7.7.3c-1 .2-1.7.9-1.9 1.9C2 9.1 2 12 2 12s0 2.9.4 4.8c.2 1 .9 1.7 1.9 1.9C6.2 19 12 19 12 19s5.8 0 7.7-.3c1-.2 1.7-.9 1.9-1.9C22 14.9 22 12 22 12s0-2.9-.4-4.8zM10 15V9l5.2 3-5.2 3z"/>
+        </svg>
+      </div>
+      <div class="platform-info">
+        <p class="platform-name">YouTube</p>
+        <p class="platform-sub">
+          <span data-tr class="active">Yapım süreçleri & Videolar</span>
+          <span data-en>Making processes & Videos</span>
+        </p>
+      </div>
+    </a>
+
+    <!-- Etsy -->
+    <a class="platform-card" href="https://etsy.com/shop/YaffleWoodworkingArt" target="_blank">
+      <div class="platform-icon etsy">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="#F06828">
+          <path d="M6.5 2h11c.8 0 1.5.7 1.5 1.5v17c0 .8-.7 1.5-1.5 1.5h-11C5.7 22 5 21.3 5 20.5v-17C5 2.7 5.7 2 6.5 2zm2 4v3h3v1.5h-3V15h4.5V16.5h-6v-10.5h6V8H8.5z"/>
+        </svg>
+      </div>
+      <div class="platform-info">
+        <p class="platform-name">Etsy</p>
+        <p class="platform-sub">
+          <span data-tr class="active">Uluslararası el yapımı mağazası</span>
+          <span data-en>International handmade marketplace</span>
+        </p>
+      </div>
+    </a>
+
+    <!-- Shopier -->
+    <a class="platform-card" href="https://shopier.com/yafflewoods" target="_blank">
+      <div class="platform-icon sh">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--wood)" stroke-width="1.8">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+      </div>
+      <div class="platform-info">
+        <p class="platform-name">Shopier</p>
+        <p class="platform-sub">
+          <span data-tr class="active">Türkiye'de güvenli alışveriş</span>
+          <span data-en>Secure shopping in Turkey</span>
+        </p>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Yaffle <span>Woods</span></div>
+  <ul class="footer-links">
+    <li><a href="#" data-tr class="active">Hakkımızda</a><a href="#" data-en>About</a></li>
+    <li><a href="#platforms" data-tr class="active">Mağazalar</a><a href="#platforms" data-en>Shops</a></li>
+    <li><a href="https://instagram.com/KULLANICI_ADINIZ" target="_blank">Instagram</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Yaffle Woods</p>
+</footer>
+
+<script>
+  let currentLang = 'tr';
+
+  function setLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('[data-tr]').forEach(el => {
+      el.classList.toggle('active', lang === 'tr');
+    });
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.classList.toggle('active', lang === 'en');
+    });
+    document.querySelectorAll('.lang-btn').forEach((btn, i) => {
+      btn.classList.toggle('active', (i === 0 && lang === 'tr') || (i === 1 && lang === 'en'));
+    });
+    document.documentElement.lang = lang;
+  }
+
+  // Görsel yoksa placeholder göster, varsa img göster
+  document.querySelectorAll('.gallery-item img, .about-image img, .logo-wrap img').forEach(img => {
+    img.onload = function() {
+      this.style.display = 'block';
+      const placeholder = this.parentElement.querySelector('[class$="-placeholder"], .logo-placeholder');
+      if (placeholder) placeholder.style.display = 'none';
+    };
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.product-card, .platform-card, .stat').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
