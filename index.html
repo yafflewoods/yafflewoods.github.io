@@ -84,20 +84,20 @@
   }
 
   .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(46,103,50,0.18) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(196,149,106,0.08) 0%, transparent 60%);
-    pointer-events: none;
-  }
+	  position: absolute;
+	  inset: 0;
+	  background: 
+		linear-gradient(to bottom, rgba(13, 31, 14, 0.8), rgba(13, 31, 14, 0.4)),
+		url('about.JPG') no-repeat center center;
+	  background-size: cover;
+	  pointer-events: none;
+	  z-index: 0;
+	}
 
-  .hero-texture {
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    pointer-events: none;
-  }
+	/* Opsiyonel: Artı işaretlerini biraz daha şeffaf yapmak isterseniz */
+	.hero-texture {
+	  opacity: 0.3; 
+	}
 
   .hero-content {
     display: flex;
@@ -576,7 +576,7 @@
       <span class="en">Natural wood products shaped by craftsmanship</span>
     </p>
 
-    <div class="hero-divider"></div>
+    
 
     <a href="#platforms" class="yt-cta" style="margin-top: 0;">
       <span class="tr">Mağazaları Keşfet</span>
@@ -637,7 +637,7 @@
 
       <div class="stats-row">
         <div class="stat">
-          <span class="stat-num">100%</span>
+          <span class="stat-num"> 100%</span>
           <span class="stat-label">
             <span class="tr">Doğal Ahşap</span>
             <span class="en">Natural Wood</span>
@@ -645,7 +645,7 @@
         </div>
         <div class="stat">
           <span class="stat-num">
-            <span class="tr">El</span><span class="en">Hand</span>
+            <span class="tr"> El</span><span class="en">Hand</span>
           </span>
           <span class="stat-label">
             <span class="tr">İşçiliği</span><span class="en">Crafted</span>
@@ -656,7 +656,7 @@
             <span class="tr">Özel</span><span class="en">Bespoke</span>
           </span>
           <span class="stat-label">
-            <span class="tr">Tasarım</span><span class="en">Design</span>
+            <span class="tr"> Tasarım</span><span class="en">Design</span>
           </span>
         </div>
       </div>
@@ -683,7 +683,7 @@
           <span class="en">Hair Sticks</span>
         </p>
         <p class="product-desc">
-          <span class="tr">Farklı ahşap türleri ve tasarımlarla hazırlanan, günlük kullanıma uygun el yapımı saç aksesuarları.</span>
+          <span class="tr">Farklı ağaç türleri ve tasarımlarla hazırlanan, günlük kullanıma uygun el yapımı saç aksesuarları.</span>
           <span class="en">Handmade hair accessories crafted from various wood species and designs, suitable for everyday use.</span>
         </p>
       </div>
@@ -722,14 +722,11 @@
       <span class="en">Watch the <em>making</em></span>
     </h2>
     <p class="section-body" style="margin: 0 auto;">
-      <span class="tr">Ham ahşaptan son ürüne uzanan yolculuğu kanalımızdan takip edin. Her video bir el sanatının hikâyesi.</span>
+      <span class="tr">Ham ağaçtan son ürüne uzanan yolculuğu kanalımızdan takip edin. Her video bir el sanatının hikâyesi.</span>
       <span class="en">Follow the journey from raw timber to finished piece on our channel. Each video tells the story of a craft.</span>
     </p>
 
     <div class="yt-embed">
-      <!-- VIDEO_ID kısmını kendi video ID'nizle değiştirin -->
-      <!-- Shorts için: https://www.youtube.com/embed/VIDEO_ID -->
-      <!-- Normal video için aynı format geçerlidir -->
       <iframe src="https://www.youtube.com/embed/oSUy88p5czM?si=D_uujrLY8BYc1SYp" allowfullscreen></iframe>
     </div>
 
@@ -756,6 +753,7 @@
 
   <div class="platforms-grid">
 
+    <!-- Instagram -->
     <a class="platform-card" href="https://instagram.com/yaffle.woods/" target="_blank">
       <div class="platform-icon ig">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E1306C" stroke-width="1.8">
@@ -770,6 +768,7 @@
       </div>
     </a>
 
+    <!-- YouTube -->
     <a class="platform-card" href="https://youtube.com/@YaffleWoods" target="_blank">
       <div class="platform-icon yt">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="#FF0000">
@@ -782,10 +781,11 @@
       </div>
     </a>
 
+    <!-- Etsy (Gerçek Logosu ile Güncellendi) -->
     <a class="platform-card" href="https://etsy.com/shop/YaffleWoodworkingArt" target="_blank">
       <div class="platform-icon etsy">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="#F06828">
-          <path d="M6.5 2h11c.8 0 1.5.7 1.5 1.5v17c0 .8-.7 1.5-1.5 1.5h-11C5.7 22 5 21.3 5 20.5v-17C5 2.7 5.7 2 6.5 2zm2 4v3h3v1.5h-3V15h4.5V16.5h-6v-10.5h6V8H8.5z"/>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="#F1641E">
+          <path d="M10.463 12.428c-.023.284-.04.484-.04.795 0 .313.017.513.04.797h1.026c.307 0 .426-.144.426-.403v-.791c0-.26-.119-.404-.426-.404h-1.026zm7.25-1.42c-.22.012-.424.032-.628.064-.092.014-.183.024-.282.043-.075.012-.132.05-.132.128v5.525c0 .35.25.617.585.617.29 0 .532-.194.63-.448.065-.17.078-.34.078-.52v-5.28c0-.12-.03-.138-.251-.129zm-5.118-2.618c.036-.312.046-.532.046-.867 0-.334-.01-.555-.046-.867H11.53c-.347 0-.46.16-.46.46v.814c0 .298.113.46.46.46h1.065zm6.541 4.774c-.03-.264-.043-.46-.043-.757s.013-.493.043-.757h-.984c-.305 0-.422.146-.422.404v.706c0 .26.117.405.422.405h.984zm-7.973-2.673H10.15c-.276 0-.376.13-.376.36v.44h1.365c.348 0 .463-.162.463-.46v-.34h-.439zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zM7.555 16.57c1.373 0 2.373-.854 2.766-2.013.125-.371.134-.736.134-1.127 0-.256-.008-.445-.028-.654h1.047c.504 0 .914-.41.914-.913v-.331c0-.505-.41-.914-.914-.914h-1.111c-.046-.35-.078-.602-.078-.962 0-.361.032-.612.078-.963h1.22c.505 0 .915-.41.915-.913v-.814c0-.504-.41-.914-.915-.914H8.483c-.886 0-1.611.724-1.611 1.612v5.795c0 .886.725 1.61 1.61 1.61h4.083c.505 0 .915-.409.915-.913v-.706c0-.505-.41-.914-.915-.914H7.555zm11.73-5.28c0-1.282-1.043-2.325-2.327-2.325-.56 0-1.07.2-1.472.531-.41-.341-.937-.531-1.513-.531-.83 0-1.554.437-1.96 1.096-.282-.544-.827-.92-1.464-.92-.888 0-1.612.724-1.612 1.612v.111h-.105c-.504 0-.913.41-.913.914v.44c0 .504.41.914.913.914h.091c.02.247.034.482.034.8 0 .317-.014.551-.034.798H9.01c-.505 0-.915.41-.915.913v.791c0 .505.41.914.915.914h1.411c.42.923 1.346 1.564 2.424 1.564.847 0 1.58-.396 2.046-1.011.393.593 1.07 1.011 1.841 1.011.666 0 1.258-.3 1.657-.773.344.478.903.773 1.53.773.504 0 .914-.41.914-.914v-5.28c0-.503-.41-.913-.914-.913h-.19z"/>
         </svg>
       </div>
       <div class="platform-info">
@@ -794,12 +794,14 @@
       </div>
     </a>
 
+    <!-- Shopier (Özgün Logosu ile Güncellendi) -->
     <a class="platform-card" href="https://shopier.com/yafflewoods" target="_blank">
       <div class="platform-icon sh">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--wood)" stroke-width="1.8">
-          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <path d="M16 10a4 4 0 01-8 0"/>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <rect width="24" height="24" rx="5" fill="#253494"/>
+          <path d="M12 5.5L8 8V17C8 17.5523 8.44772 18 9 18H15C15.5523 18 16 17.5523 16 17V8L12 5.5Z" fill="white"/>
+          <path d="M10 9C10 7.89543 10.8954 7 12 7C13.1046 7 14 7.89543 14 9" stroke="#253494" stroke-width="1.2"/>
+          <path d="M12 11.5V14.5M10.5 13H13.5" stroke="#253494" stroke-width="1.2" stroke-linecap="round"/>
         </svg>
       </div>
       <div class="platform-info">
@@ -808,7 +810,7 @@
       </div>
     </a>
 
-  </div>
+</div>
 </section>
 
 <!-- FOOTER -->
@@ -817,9 +819,8 @@
   <ul class="footer-links">
     <li><a href="#"><span class="tr">Hakkımızda</span><span class="en">About</span></a></li>
     <li><a href="#platforms"><span class="tr">Mağazalar</span><span class="en">Shops</span></a></li>
-    <li><a href="https://instagram.com/yaffle.woods/" target="_blank">Instagram</a></li>
   </ul>
-  <p class="footer-copy">© 2025 Yaffle Woods</p>
+  <p class="footer-copy">© 2026 Yaffle Woods</p>
 </footer>
 
 <script>
